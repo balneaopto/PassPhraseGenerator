@@ -1,5 +1,5 @@
 # PassPhraseGenerator
-![Screenshot](screenshot01.png) ![Screenshot](screenshot02.png) ![Screenshot](screenshot03.png)
+![Screenshot](screenshot01.png) ![Screenshot](screenshot02.png) <img src="screenshot03.png" alt="Screenshot] width="30"/>
 
 The code of the example app, written using Kivy an KivyMD, that you can see in action at [not yet available link]()
 It' s a Passphrase generator based on Diceware. I have built it to run on Android but I also use it on my Linux desktop.
