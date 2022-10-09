@@ -1,0 +1,120 @@
+MDNavigationLayout:
+
+	ScreenManager:
+	
+		Screen:
+            FloatLayout:
+				MDToolbar:
+					pos_hint: {'top': 1}
+					title: "PassPhraseGenerator"
+					elevation: 10
+					left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
+				GridLayout:
+                    pos_hint: {'top': .9}
+                    size_hint_y: .2
+                    rows: 4
+                    columns: 2
+                    padding: 20
+                    MDLabel:
+                        id: choose_lang
+				        text_size: self.size
+				        valign: "middle"
+                    MDDropDownItem:
+				        id: drop_item
+				        on_release: app.menu.open()
+					MDLabel:
+                        id: add_number
+                        text_size: self.size
+                        valign: 'middle'
+					MDSwitch:
+						id: numbersswitch
+	                    on_active: app.switch01_callback(self, self.active)
+					MDLabel:
+                        id: add_spec_char
+                        text_size: self.size
+                        valign: 'middle'
+					MDSwitch:
+						id: symbolswitch
+		                on_active: app.switch02_callback(self, self.active)
+		        MDLabel:
+		            id: words	
+		            #md_bg_color: 0, 1, 1, .5
+		            pos_hint: {'top': .67}
+		            size_hint: 1,.1
+		            padding: 20, 0	        
+				MDSlider:
+					id: wordsslider
+					pos_hint: {'top': .61}
+					size_hint: 1,.1
+					halign: 'center' 
+					hint: False
+					min: 2
+					max: 10
+					value: 2 + (10 - 2)/2
+                    color: "E53935"
+                    #color: app.theme_cls.primary_color
+					# The following if statement needed to respond to touch events inside the slider widget.
+					# Otherwise touch events will be dispatched to all displayed widgets
+					on_touch_up: if self.collide_point(*args[1].pos): app.create_pass_phrase(int(self.value))
+				MDLabel:
+					id: words_number
+                    pos_hint: {'x': .80, 'y': .35}
+                    size_hint: .2,.3
+					font_style: 'Subtitle2'
+                    text: str(int(root.ids.wordsslider.value)) + ' ' + app.words_number
+				ScrollView:
+                    pos_hint: {'top': .50}
+				    MDLabel:
+                        id: mdlab
+                        size_hint_y: None
+                        height: self.texture_size[1]
+						halign: 'center'
+						font_style: 'H6'
+              
+                   
+		    MDNavigationDrawer:
+			    id: nav_drawer
+			
+			    BoxLayout:
+				    orientation: "vertical"
+				    padding: "8dp"
+				    spacing: "8dp"
+			
+				    AnchorLayout:
+					    anchor_x: "left"
+					    size_hint_y: None
+					    height: avatar.height
+			
+						Image:
+							id: avatar
+							size_hint: None, None
+							size: "75dp", "75dp"
+                            source: "data/icon.png"
+					MDLabel:
+						text: "PassPhraseGenerator App"
+						font_style: "Button"
+						size_hint_y: None
+						height: self.texture_size[1]
+                    MDLabel:
+                        text: "Powered by Kivy and KivyMD"
+                        font_style: "Caption"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+						
+					ScrollView:
+				
+						MDList:
+				
+							OneLineAvatarListItem:
+								text: "Info App"
+								on_press: app.show_app_info_dialog()
+							    IconLeftWidget:
+								    icon: "information"
+							OneLineAvatarListItem:
+								text: "Youtube Channel"
+								on_press: app.open_youtube_channel()
+								IconLeftWidget:
+									icon: "youtube"
+				
+		
+	
