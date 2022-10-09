@@ -7,12 +7,3 @@ I' m a hobbist, this is just an exercise, but you can use this app whenever you 
 ...long enough and easy for you to remember.
 Click [here](https://theworld.com/~reinhold/diceware.html) for info about Diceware and  words lists.
 I hope to be helpful sharing this code.
-
-
-
-
-
-
-
-
-
